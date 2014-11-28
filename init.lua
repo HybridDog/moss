@@ -1,6 +1,8 @@
 local load_time_start = os.clock()
 
-moss = moss or {}
+if not rawget(_G, "moss") then
+	moss = {}
+end
 moss.registered_moss = moss.registered_moss or {}
 
 local path = minetest.get_modpath("moss")
