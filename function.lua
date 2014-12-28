@@ -14,7 +14,7 @@ function moss.register_moss(tab)
 			if not minetest.find_node_near(pos, range, output) then
 				node.name = output
 				minetest.swap_node(pos, node)
-				print("[moss] "..input.." changed to "..output.." at ("..pos.x..", "..pos.y..", "..pos.z..")")
+				minetest.log("info", "[moss] "..input.." changed to "..output.." at ("..pos.x..", "..pos.y..", "..pos.z..")")
 			end
 		end,
 	})

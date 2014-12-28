@@ -140,4 +140,4 @@ if default then
 	})
 end
 
-print(string.format("[moss] loaded after ca. %.2fs", os.clock() - load_time_start))
+minetest.log("info", string.format("[moss] loaded after ca. %.2fs", os.clock() - load_time_start))
