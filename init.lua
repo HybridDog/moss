@@ -27,7 +27,7 @@ moss.register_moss({
 --]]
 
 
-if default then
+if rawget(_G, "default") then
 	local function copytable(tab)
 		local t = {}
 		for n,i in pairs(tab) do
@@ -115,6 +115,8 @@ if default then
 		name = "junglewood",
 		groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3},
 	})
+
+	add_mossy({name = "stonebrick"})
 
 	add_mossy({name = "desert_stonebrick"})
 
