@@ -120,6 +120,11 @@ if rawget(_G, "default") then
 
 	add_mossy({name = "desert_stonebrick"})
 
+	add_mossy({
+		name = "desert_cobble",
+		groups = {cracky=3, stone=1},
+	})
+
 	add_mossy({name = "sandstone"})
 
 	add_mossy({name = "sandstonebrick"})
