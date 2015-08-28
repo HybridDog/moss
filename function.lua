@@ -6,7 +6,7 @@ local function air_touching(pos)
 			{x=pos.x, y=pos.y+i, z=pos.z},
 			{x=pos.x, y=pos.y, z=pos.z+i},
 		}) do
-			if minetest.get_node(i).name == "air" then
+			if minetest.get_node(p).name == "air" then
 				return true
 			end
 		end
