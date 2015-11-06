@@ -39,6 +39,7 @@ function moss.register_moss(tab)
 		neighbors = {"group:water"},
 		interval = interval,
 		chance = chance,
+		catch_up = false,
 		action = function(pos, node)
 			-- wrapping the function maybe avoids making a new one for each node
 			moss_abm_func(pos, node, input, output, range)
