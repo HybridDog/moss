@@ -1,11 +1,11 @@
 local load_time_start = os.clock()
 
-if not rawget(_G, "moss") then
+if not minetest.global_exists"moss" then
 	moss = {}
 end
 moss.registered_moss = moss.registered_moss or {}
 
-local path = minetest.get_modpath("moss")
+local path = minetest.get_modpath"moss"
 dofile(path.."/function.lua")
 
 --[[
@@ -27,7 +27,7 @@ moss.register_moss({
 --]]
 
 
-if rawget(_G, "default") then
+if minetest.global_exists"default" then
 	local function copytable(tab)
 		local t = {}
 		for n,i in pairs(tab) do
@@ -47,7 +47,7 @@ if rawget(_G, "default") then
 	if stairs then
 		add_mossy_stairs = function(tab)
 			local name = tab.stairname or tab.name
-			for _,typ in pairs({"stair", "slab"}) do
+			for _,typ in pairs{"stair", "slab"} do
 				local stname = "stairs:"..typ.."_"..name
 				local mstname = "stairs:"..typ.."_mossy"..name
 				local data = minetest.registered_nodes[stname]
@@ -60,10 +60,10 @@ if rawget(_G, "default") then
 							data.sounds)
 					end
 
-					moss.register_moss({
+					moss.register_moss{
 						node = stname,
 						result = mstname
-					})
+					}
 				end
 			end
 		end
@@ -84,10 +84,10 @@ if rawget(_G, "default") then
 
 			minetest.register_node(result, data)
 
-			moss.register_moss({
+			moss.register_moss{
 				node = original,
 				result = "default:mossy"..name
-			})
+			}
 		end
 
 		if not tab.no_stairs then
@@ -95,56 +95,56 @@ if rawget(_G, "default") then
 		end
 	end
 
-	moss.register_moss({
+	moss.register_moss{
 		node = "default:cobble",
 		result = "default:mossycobble"
-	})
+	}
 
-	add_mossy({
+	add_mossy{
 		name = "cobble",
 		tiles = {"default_mossycobble.png"},
 		no_block = true,
-	})
+	}
 
-	add_mossy({
+	add_mossy{
 		name = "wood",
 		groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3},
-	})
+	}
 
-	add_mossy({
+	add_mossy{
 		name = "junglewood",
 		groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3},
-	})
+	}
 
-	add_mossy({name = "stonebrick"})
+	add_mossy{name = "stonebrick"}
 
-	add_mossy({name = "desert_stonebrick"})
+	add_mossy{name = "desert_stonebrick"}
 
-	add_mossy({
+	add_mossy{
 		name = "desert_cobble",
 		groups = {cracky=3, stone=1},
-	})
+	}
 
-	add_mossy({name = "sandstone"})
+	add_mossy{name = "sandstone"}
 
-	add_mossy({name = "sandstonebrick"})
+	add_mossy{name = "sandstonebrick"}
 
-	add_mossy({name = "brick"})
+	add_mossy{name = "brick"}
 
 	minetest.register_node("moss:gravel_wet", {
 		description = "Wet Gravel",
 		tiles = {"moss_gravel_wet.png"},
 		groups = {crumbly=2, falling_node=1},
-		sounds = default.node_sound_dirt_defaults({
+		sounds = default.node_sound_dirt_defaults{
 			footstep = {name="default_gravel_footstep", gain=0.5},
 			dug = {name="default_gravel_footstep", gain=1.0},
-		}),
+		},
 	})
 
-	moss.register_moss({
+	moss.register_moss{
 		node = "default:gravel",
 		result = "moss:gravel_wet"
-	})
+	}
 end
 
 minetest.log("info", string.format("[moss] loaded after ca. %.2fs", os.clock() - load_time_start))
