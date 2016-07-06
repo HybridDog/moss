@@ -16,13 +16,13 @@ _= moss and moss.regi[…]
 if moss then
 […]
 
-moss.register_moss({
+moss.register_moss{
 	node = <string>,
 	result = <string>,
 	interval = <number>,
 	chance = <number>,
 	rarity = <number>,
-})
+}
 
 --]]
 

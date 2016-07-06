@@ -24,7 +24,7 @@ local function moss_abm_func(pos, node, input, output, range)
 end
 
 function moss.register_moss(tab)
-	table.insert(moss.registered_moss, tab)
+	moss.registered_moss[#moss.registered_moss+1] = tab
 	local input = tab.node
 	local output = tab.result
 	if not minetest.registered_nodes[input]
