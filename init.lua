@@ -55,7 +55,9 @@ if minetest.global_exists"default" then
 					if not minetest.registered_nodes[mstname] then
 						stairs["register_"..typ]("mossy"..name, "default:mossy"..name,
 							tab.groups or data.groups,
-							tab.tiles or {add_moss_tex(data.tiles[1])},
+							tab.tiles or {add_moss_tex(
+								type(data.tiles[1]) == "string" and data.tiles[1]
+								or data.tiles[1].name)},
 							"Mossy "..data.description,
 							data.sounds)
 					end
