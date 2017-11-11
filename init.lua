@@ -37,7 +37,9 @@ if minetest.global_exists"default" then
 	end
 
 	local trans_tab = {[1]=3, [3]=1}
-	local function add_moss_tex(texture)
+	local function add_moss_tex(tiles)
+		assert(tiles, "missing textures")
+		local texture = type(tiles[1]) == "string" and tiles[1] or tiles[1].name
 		local a = math.random(0,7)
 		local b = trans_tab[a] or a
 		return texture.."^[transform"..a.."^moss_overlay.png^[transform"..b
@@ -55,9 +57,7 @@ if minetest.global_exists"default" then
 					if not minetest.registered_nodes[mstname] then
 						stairs["register_"..typ]("mossy"..name, "default:mossy"..name,
 							tab.groups or data.groups,
-							tab.tiles or {add_moss_tex(
-								type(data.tiles[1]) == "string" and data.tiles[1]
-								or data.tiles[1].name)},
+							tab.tiles or {add_moss_tex(data.tiles)},
 							"Mossy "..data.description,
 							data.sounds)
 					end
@@ -81,7 +81,7 @@ if minetest.global_exists"default" then
 			local result = ":default:mossy"..name
 			local data = copytable(minetest.registered_nodes[original])
 			data.description = "Mossy "..data.description
-			data.tiles = tab.tiles or {add_moss_tex(data.tiles[1])}
+			data.tiles = tab.tiles or {add_moss_tex(data.tiles)}
 			data.groups = tab.groups or data.groups
 
 			minetest.register_node(result, data)
