@@ -8,24 +8,6 @@ moss.registered_moss = moss.registered_moss or {}
 local path = minetest.get_modpath"moss"
 dofile(path.."/function.lua")
 
---[[
-— add moss? do depends.txt
-— add one moss node:
-_= moss and moss.regi[…]
-— or more:
-if moss then
-[…]
-
-moss.register_moss{
-	node = <string>,
-	result = <string>,
-	interval = <number>,
-	chance = <number>,
-	rarity = <number>,
-}
-
---]]
-
 
 if minetest.global_exists"default" then
 	local function copytable(tab)
